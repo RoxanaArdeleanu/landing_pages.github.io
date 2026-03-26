@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cursuri Colorimetrie & Hairstyling Avansat — Elena Enache, Iași</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    #0C0C12;
+    --paper:  #F5F0E8;
+    --gold:   #B8972E;
+    --gold2:  #D4AF6A;
+    --muted:  #6B6455;
+    --off:    #1A1812;
+    --cream:  #EDE7D9;
+    --border: rgba(184,151,46,0.25);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 999;
+    opacity: .6;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+  h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; line-height: 1.15; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 28px; }
+  .container--wide { max-width: 1060px; margin: 0 auto; padding: 0 28px; }
+
+  /* ── GOLD LINE ── */
+  .gold-line {
+    display: block; width: 48px; height: 1px;
+    background: var(--gold); margin: 0 auto 28px;
+  }
+  .gold-line--left { margin: 0 0 24px; }
+
+  /* ════════════════════════════════════
+     HERO
+  ════════════════════════════════════ */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 110px 0 100px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero__layout {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 60px; align-items: center;
+  }
+  @media (max-width: 820px) {
+    .hero__layout { grid-template-columns: 1fr; gap: 44px; }
+    .hero__photo { max-height: 320px; order: -1; }
+  }
+
+  .hero__eyebrow {
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero__eyebrow::after {
+    content: ''; flex: 1; max-width: 60px;
+    height: 1px; background: var(--gold); opacity: .4;
+  }
+
+  .hero__title {
+    font-size: clamp(28px, 3.8vw, 50px);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.12;
+    margin-bottom: 20px;
+  }
+  .hero__title em { font-style: italic; color: var(--gold2); }
+
+  .hero__sub {
+    font-size: 16px; color: rgba(245,240,232,.62);
+    max-width: 460px; margin-bottom: 40px; line-height: 1.75;
+  }
+
+  .hero__photo {
+    width: 100%; aspect-ratio: 3/4;
+    background: linear-gradient(160deg, rgba(184,151,46,.07) 0%, rgba(184,151,46,.02) 100%);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+  }
+  .hero__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero__photo-placeholder {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; letter-spacing: .07em; color: rgba(184,151,46,.28);
+    text-align: center; padding: 24px; line-height: 1.8;
+  }
+
+  .hero__meta {
+    display: flex; gap: 32px; flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+    padding-top: 28px; margin-top: 0;
+  }
+  .hero__meta-label {
+    font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 6px;
+  }
+  .hero__meta-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: var(--paper);
+  }
+
+  /* corner deco */
+  .hero__corner {
+    position: absolute; top: 48px; right: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px; font-weight: 300; line-height: 1;
+    color: rgba(184,151,46,.05);
+    user-select: none; pointer-events: none;
+    letter-spacing: -4px;
+  }
+
+  /* ── CTA BUTTON ── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 18px 40px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: .12em; text-transform: uppercase;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: background .2s, transform .15s;
+    position: relative; overflow: hidden;
+  }
+  .btn::after {
+    content: '→';
+    transition: transform .2s;
+  }
+  .btn:hover { background: var(--gold2); transform: translateY(-1px); }
+  .btn:hover::after { transform: translateX(4px); }
+
+  .btn--ghost {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+  }
+  .btn--ghost:hover { background: rgba(184,151,46,.08); }
+
+  /* ════════════════════════════════════
+     PROBLEM
+  ════════════════════════════════════ */
+  .problem {
+    padding: 110px 0;
+    background: var(--off);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .problem__label {
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 48px; display: block;
+  }
+
+  .problem__heading {
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.1; margin-bottom: 40px;
+    max-width: 680px;
+  }
+  .problem__heading em { font-style: italic; color: var(--gold2); }
+
+  .problem__grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 64px;
+  }
+  .problem__card {
+    background: var(--off);
+    padding: 36px 32px;
+  }
+  .problem__card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; font-weight: 300;
+    color: rgba(184,151,46,.18); line-height: 1;
+    margin-bottom: 16px;
+  }
+  .problem__card-text {
+    font-size: 15px; color: rgba(245,240,232,.7); line-height: 1.6;
+  }
+
+  /* ════════════════════════════════════
+     SOLUTION / MECHANISM
+  ════════════════════════════════════ */
+  .solution {
+    padding: 110px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .solution__layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+  @media (max-width: 680px) {
+    .solution__layout { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  .solution__tag {
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px; display: block;
+  }
+  .solution__heading {
+    font-size: clamp(30px, 4.5vw, 46px); margin-bottom: 28px; line-height: 1.1;
+  }
+  .solution__heading em { font-style: italic; color: var(--gold2); }
+
+  .solution__body { font-size: 16px; color: rgba(245,240,232,.68); line-height: 1.75; }
+
+  .solution__list { list-style: none; margin-top: 36px; }
+  .solution__list li {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 18px 0; border-bottom: 1px solid var(--border);
+    font-size: 15px; color: rgba(245,240,232,.75);
+  }
+  .solution__list li:last-child { border-bottom: none; }
+  .solution__list li::before {
+    content: '';
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0; margin-top: 7px;
+  }
+
+  /* ════════════════════════════════════
+     CURRICULUM
+  ════════════════════════════════════ */
+  .curriculum {
+    padding: 110px 0;
+    background: var(--off);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .curriculum__head {
+    text-align: center; margin-bottom: 72px;
+  }
+  .curriculum__tag {
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 20px;
+  }
+  .curriculum__heading {
+    font-size: clamp(32px, 5vw, 52px);
+  }
+  .curriculum__heading em { font-style: italic; color: var(--gold2); }
+
+  .curriculum__grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .curriculum__item {
+    border: 1px solid var(--border);
+    padding: 32px 28px;
+    position: relative;
+    transition: border-color .2s;
+  }
+  .curriculum__item:hover { border-color: var(--gold); }
+
+  .curriculum__icon {
+    font-size: 28px; margin-bottom: 16px; display: block;
+  }
+  .curriculum__item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; margin-bottom: 10px; font-weight: 400;
+    color: var(--paper);
+  }
+  .curriculum__item-desc {
+    font-size: 14px; color: rgba(245,240,232,.55); line-height: 1.65;
+  }
+
+  .curriculum__details {
+    display: flex; gap: 0;
+    border: 1px solid var(--border);
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+  .curriculum__detail {
+    flex: 1; min-width: 160px;
+    padding: 28px 32px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .curriculum__detail:last-child { border-right: none; }
+  .curriculum__detail-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; color: var(--gold); display: block; line-height: 1;
+    margin-bottom: 8px;
+  }
+  .curriculum__detail-label {
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(245,240,232,.45);
+  }
+
+  /* ════════════════════════════════════
+     TESTIMONIALS
+  ════════════════════════════════════ */
+  .testimonials {
+    padding: 110px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .testimonials__head {
+    margin-bottom: 64px;
+  }
+  .testimonials__tag {
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 20px;
+  }
+  .testimonials__heading {
+    font-size: clamp(30px, 4.5vw, 46px); max-width: 480px;
+  }
+  .testimonials__heading em { font-style: italic; color: var(--gold2); }
+
+  .testimonials__grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .testimonial {
+    border: 1px solid var(--border);
+    padding: 36px 32px;
+    position: relative;
+  }
+  .testimonial::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px; line-height: .8;
+    color: rgba(184,151,46,.15);
+    position: absolute; top: 20px; left: 24px;
+  }
+  .testimonial__text {
+    font-size: 15px; color: rgba(245,240,232,.75);
+    line-height: 1.7; margin-bottom: 28px;
+    padding-top: 24px;
+    font-style: italic;
+  }
+  .testimonial__author {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .testimonial__avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(184,151,46,.15);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; color: var(--gold);
+    flex-shrink: 0;
+  }
+  .testimonial__name {
+    font-size: 14px; color: var(--paper); font-weight: 500;
+  }
+  .testimonial__role {
+    font-size: 12px; color: rgba(245,240,232,.4); margin-top: 2px;
+  }
+  .testimonial__stars {
+    color: var(--gold); font-size: 13px; letter-spacing: 2px; margin-bottom: 4px;
+  }
+
+  /* ════════════════════════════════════
+     ABOUT
+  ════════════════════════════════════ */
+  .about {
+    padding: 110px 0;
+    background: var(--off);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about__layout {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 80px; align-items: center;
+  }
+  @media (max-width: 640px) {
+    .about__layout { grid-template-columns: 1fr; gap: 48px; }
+    .about__portrait { order: -1; }
+  }
+
+  .about__portrait {
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, rgba(184,151,46,.08), rgba(184,151,46,.02));
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .about__portrait-placeholder {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; letter-spacing: .1em;
+    color: rgba(184,151,46,.35); text-align: center;
+    padding: 24px;
+    line-height: 1.6;
+  }
+  .about__portrait::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(transparent, var(--off));
+  }
+
+  .about__tag {
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 24px;
+  }
+  .about__heading {
+    font-size: clamp(30px, 4vw, 44px); margin-bottom: 24px; line-height: 1.1;
+  }
+  .about__heading em { font-style: italic; color: var(--gold2); }
+
+  .about__bio {
+    font-size: 16px; color: rgba(245,240,232,.68); line-height: 1.75; margin-bottom: 36px;
+  }
+
+  .about__stats {
+    display: flex; gap: 40px; flex-wrap: wrap;
+    border-top: 1px solid var(--border); padding-top: 32px;
+  }
+  .about__stat-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px; color: var(--gold); display: block; line-height: 1;
+  }
+  .about__stat-label {
+    font-size: 12px; color: rgba(245,240,232,.4);
+    text-transform: uppercase; letter-spacing: .1em; margin-top: 6px;
+  }
+
+  /* ════════════════════════════════════
+     FAQ
+  ════════════════════════════════════ */
+  .faq {
+    padding: 110px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq__head { text-align: center; margin-bottom: 64px; }
+  .faq__tag {
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 20px;
+  }
+  .faq__heading { font-size: clamp(30px, 4.5vw, 46px); }
+  .faq__heading em { font-style: italic; color: var(--gold2); }
+
+  .faq__list { max-width: 720px; margin: 0 auto; }
+
+  .faq__item {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .faq__q {
+    width: 100%; background: none; border: none; cursor: pointer;
+    padding: 28px 0; text-align: left;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: var(--paper); font-weight: 400;
+    line-height: 1.3;
+    transition: color .2s;
+  }
+  .faq__q:hover { color: var(--gold2); }
+  .faq__icon {
+    width: 20px; height: 20px; border: 1px solid var(--border);
+    border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: var(--gold);
+    transition: transform .25s, background .2s;
+  }
+  .faq__item.open .faq__icon { transform: rotate(45deg); background: rgba(184,151,46,.1); }
+
+  .faq__a {
+    max-height: 0; overflow: hidden;
+    transition: max-height .3s ease, padding .3s ease;
+    font-size: 15px; color: rgba(245,240,232,.65); line-height: 1.75;
+  }
+  .faq__a-inner { padding-bottom: 28px; }
+  .faq__item.open .faq__a { max-height: 300px; }
+
+  /* ════════════════════════════════════
+     FORM / REGISTRATION
+  ════════════════════════════════════ */
+  .register {
+    padding: 120px 0;
+    background: var(--off);
+    position: relative; overflow: hidden;
+  }
+
+  /* subtle radial glow */
+  .register::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,151,46,.06) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .register__head { text-align: center; margin-bottom: 56px; position: relative; }
+  .register__tag {
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--gold); display: block; margin-bottom: 20px;
+  }
+  .register__heading {
+    font-size: clamp(32px, 5vw, 54px); margin-bottom: 16px;
+  }
+  .register__heading em { font-style: italic; color: var(--gold2); }
+  .register__sub {
+    font-size: 16px; color: rgba(245,240,232,.55); max-width: 420px; margin: 0 auto;
+  }
+
+  .register__urgency {
+    background: rgba(184,151,46,.08);
+    border: 1px solid rgba(184,151,46,.25);
+    padding: 14px 24px; text-align: center;
+    font-size: 14px; color: var(--gold2);
+    margin-bottom: 48px; position: relative;
+    letter-spacing: .03em;
+  }
+  .register__urgency strong { font-weight: 500; }
+
+  .register__form {
+    max-width: 520px; margin: 0 auto;
+    position: relative;
+  }
+
+  .form-group { margin-bottom: 20px; }
+  .form-label {
+    display: block; font-size: 11px; letter-spacing: .15em; text-transform: uppercase;
+    color: rgba(245,240,232,.4); margin-bottom: 10px;
+  }
+  .form-input, .form-select, .form-textarea {
+    width: 100%; background: rgba(245,240,232,.04);
+    border: 1px solid var(--border);
+    padding: 16px 18px;
+    color: var(--paper); font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color .2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--gold);
+    background: rgba(184,151,46,.04);
+  }
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(245,240,232,.25); }
+
+  .form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B8972E' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 18px center;
+    padding-right: 42px;
+  }
+  .form-select option { background: var(--off); color: var(--paper); }
+
+  .form-textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    width: 100%;
+    padding: 20px 24px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: .14em; text-transform: uppercase;
+    border: none; cursor: pointer;
+    transition: background .2s, transform .15s;
+    margin-top: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+  }
+  .form-submit:hover { background: var(--gold2); transform: translateY(-1px); }
+  .form-submit:active { transform: translateY(0); }
+
+  .form-note {
+    font-size: 12px; color: rgba(245,240,232,.3);
+    text-align: center; margin-top: 16px; line-height: 1.6;
+  }
+
+  /* ── SUCCESS STATE ── */
+  .form-success {
+    display: none; text-align: center; padding: 48px 32px;
+    border: 1px solid var(--border);
+  }
+  .form-success__icon {
+    font-size: 48px; margin-bottom: 24px; display: block;
+    color: var(--gold);
+  }
+  .form-success__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; margin-bottom: 12px; color: var(--paper);
+  }
+  .form-success__text { font-size: 15px; color: rgba(245,240,232,.6); line-height: 1.7; }
+
+  /* ════════════════════════════════════
+     FOOTER
+  ════════════════════════════════════ */
+  .footer {
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .footer__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; color: var(--paper); margin-bottom: 8px;
+  }
+  .footer__sub { font-size: 13px; color: rgba(245,240,232,.3); }
+
+  /* ════════════════════════════════════
+     NAV
+  ════════════════════════════════════ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+    transition: background .3s, border-color .3s;
+  }
+  .nav.scrolled {
+    background: rgba(12,12,18,.94);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+  }
+  .nav__brand-wrap { display: flex; flex-direction: column; gap: 3px; }
+  .nav__brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; color: var(--paper); text-decoration: none;
+    letter-spacing: .02em; line-height: 1;
+  }
+  .nav__brand-sub {
+    font-size: 10px; letter-spacing: .13em; text-transform: uppercase;
+    color: rgba(184,151,46,.55);
+  }
+  .nav__right {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: flex-end;
+  }
+  .nav__urgency {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; color: rgba(245,240,232,.5);
+    border: 1px solid rgba(184,151,46,.18);
+    padding: 7px 14px; white-space: nowrap;
+  }
+  .nav__urgency-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+    animation: blink 1.8s ease-in-out infinite;
+  }
+  .nav__urgency strong { color: var(--gold2); font-weight: 500; }
+  .nav__timer {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; color: var(--gold); letter-spacing: .05em;
+    min-width: 54px; display: inline-block; text-align: center;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .35; transform: scale(.65); }
+  }
+  .nav__cta {
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    border: 1px solid rgba(184,151,46,.3); padding: 10px 20px;
+    transition: border-color .2s, background .2s; white-space: nowrap;
+  }
+  .nav__cta:hover { border-color: var(--gold); background: rgba(184,151,46,.08); }
+  @media (max-width: 600px) {
+    .nav__urgency { display: none; }
+    .nav__brand-sub { display: none; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero__meta { gap: 24px; }
+    .curriculum__details { flex-direction: column; }
+    .curriculum__detail { border-right: none; border-bottom: 1px solid var(--border); }
+    .curriculum__detail:last-child { border-bottom: none; }
+    .about__stats { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__brand-wrap">
+    <a href="#" class="nav__brand">Elena Enache</a>
+    <span class="nav__brand-sub">Hairstylist&nbsp;|&nbsp;Colorist&nbsp;|&nbsp;Trainer</span>
+  </div>
+  <div class="nav__right">
+    <div class="nav__urgency">
+      <span class="nav__urgency-dot"></span>
+      <span>Grăbește-te — mai am doar <strong>2 locuri</strong> &nbsp;|&nbsp; <span class="nav__timer" id="navTimer">10:00</span></span>
+    </div>
+    <a href="#inscriere" class="nav__cta">Rezervă loc</a>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+  <div class="container--wide">
+    <div class="hero__layout">
+      <div class="hero__content">
+        <span class="hero__eyebrow">Curs intensiv de o zi · Iași</span>
+
+        <h1 class="hero__title">
+          Colorimetrie, tuns, vopsit —<br>
+          tot ce trebuie să știi,<br>
+          <em>într-o singură zi.</em>
+        </h1>
+
+        <p class="hero__sub">
+          Un curs practic, fără teorie inutilă, în care pleci cu tehnici reale pe care le poți folosi a doua zi cu clienții tăi. Pentru stilistele serioase, nu pentru cele care caută un certificat de pus pe perete.
+        </p>
+
+        <a href="#inscriere" class="btn">Vreau un loc</a>
+
+        <div class="hero__meta" style="margin-top: 44px;">
+          <div>
+            <span class="hero__meta-label">Durată</span>
+            <span class="hero__meta-val serif">1 zi intensivă</span>
+          </div>
+          <div>
+            <span class="hero__meta-label">Locație</span>
+            <span class="hero__meta-val serif">Iași</span>
+          </div>
+          <div>
+            <span class="hero__meta-label">Locuri rămase</span>
+            <span class="hero__meta-val serif" style="color: var(--gold);">Doar 2</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__photo">
+        <div class="hero__photo-placeholder">
+          Foto Elena Enache<br>în salon
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero__corner">E</div>
+</section>
+
+<!-- ════ PROBLEM ════ -->
+<section class="problem reveal">
+  <div class="container">
+    <span class="problem__label">Îți sună cunoscut?</span>
+
+    <h2 class="problem__heading">
+      Lucrezi de ani de zile,<br>
+      dar tot simți că <em>ceva lipsește.</em>
+    </h2>
+
+    <p style="font-size:16px; color: rgba(245,240,232,.6); max-width: 580px; line-height: 1.75;">
+      Nu e lipsa de talent. E lipsa unui fundament real. Majoritatea cursurilor îți arată ce să faci — nimeni nu îți explică de ce funcționează. Și exact asta face diferența dintre o stilistă bună și una pe care clienții o recomandă mai departe.
+    </p>
+
+    <div class="problem__grid">
+      <div class="problem__card">
+        <div class="problem__card-num">01</div>
+        <p class="problem__card-text">Ai vopsit părul după același procedeu de zeci de ori — și totuși rezultatele ies diferit de la clientă la clientă. Și nu știi exact de ce.</p>
+      </div>
+      <div class="problem__card">
+        <div class="problem__card-num">02</div>
+        <p class="problem__card-text">Ai urmărit tutoriale, ai practicat, ai mai fost la cursuri — dar când vine cineva cu părul complicat, tot îți intră un nod în stomac.</p>
+      </div>
+      <div class="problem__card">
+        <div class="problem__card-num">03</div>
+        <p class="problem__card-text">Clientele vin cu poze de pe Instagram și tu nu ești sigură că poți livra exact aia. Și nu vrei să promiți ce nu știi dacă poți face.</p>
+      </div>
+      <div class="problem__card">
+        <div class="problem__card-num">04</div>
+        <p class="problem__card-text">Simți că ești blocată la același nivel de prea mult timp — și știi că ai putea face mai mult, dacă ai ști cum să gândești altfel culoarea și tăietura.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ SOLUTION ════ -->
+<section class="solution reveal">
+  <div class="container">
+    <div class="solution__layout">
+      <div>
+        <span class="solution__tag">Soluția</span>
+        <h2 class="solution__heading">
+          Cunoașterea<br>
+          înlocuiește<br>
+          <em>ghicitul.</em>
+        </h2>
+        <p class="solution__body">
+          În cursul meu nu înveți rețete. Înveți să citești părul. Să înțelegi structura lui, istoricul lui, cum reacționează la culoare. Când știi asta, orice rezultat devine reproductibil — nu o întâmplare fericită.
+        </p>
+      </div>
+
+      <div>
+        <ul class="solution__list">
+          <li>Colorimetrie aplicată — principii de știința culorii traduse în practică reală, pe păr real</li>
+          <li>Analiză individualizată a structurii firului înainte de orice tratament</li>
+          <li>Tehnici de balayage și colorare avansată cu fundament științific, nu empiric</li>
+          <li>Feedback în timp real de la un trainer care lucrează zilnic în salon</li>
+          <li>Portofoliu realizat în timpul cursului — nu simulare, ci lucrări reale</li>
+          <li>Acces la cunoștința care transformă un stilist bun într-unul excepțional</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CURRICULUM ════ -->
+<section class="curriculum reveal">
+  <div class="container--wide">
+    <div class="curriculum__head">
+      <span class="curriculum__tag">Ce înveți</span>
+      <h2 class="curriculum__heading">
+        O zi în care<br>
+        <em>totul capătă sens</em>
+      </h2>
+    </div>
+
+    <div class="curriculum__grid">
+      <div class="curriculum__item">
+        <span class="curriculum__icon">🎨</span>
+        <h3 class="curriculum__item-title">Colorimetrie aplicată</h3>
+        <p class="curriculum__item-desc">Teoria culorii tradusă în decizii practice. Cum funcționează roata culorilor pe păr real, cum citești tonul natural și cum alegi culoarea corectă pentru fiecare client.</p>
+      </div>
+      <div class="curriculum__item">
+        <span class="curriculum__icon">🔬</span>
+        <h3 class="curriculum__item-title">Analiza structurii</h3>
+        <p class="curriculum__item-desc">Cum evaluezi porozitatea, densitatea și istoricul chimic al firului. Fără această analiză, orice colorare e o loterie. Cu ea, rezultatul e predictibil.</p>
+      </div>
+      <div class="curriculum__item">
+        <span class="curriculum__icon">✂️</span>
+        <h3 class="curriculum__item-title">Tehnici avansate</h3>
+        <p class="curriculum__item-desc">Balayage natural, highlight de precizie, colorare globală controlată. Aplicate cu înțelegerea procesului, nu ca pași mecanici.</p>
+      </div>
+      <div class="curriculum__item">
+        <span class="curriculum__icon">💡</span>
+        <h3 class="curriculum__item-title">Troubleshooting</h3>
+        <p class="curriculum__item-desc">Ce faci când culoarea iese altfel decât ai planificat. Cum corectezi fără să agravezi. Ce să nu faci niciodată — și de ce.</p>
+      </div>
+      <div class="curriculum__item">
+        <span class="curriculum__icon">📋</span>
+        <h3 class="curriculum__item-title">Consultația clientei</h3>
+        <p class="curriculum__item-desc">Cum conduci o consultație înainte de colorare. Ce întrebări pui, cum gestionezi așteptările nerealiste, cum construiești o relație de lungă durată.</p>
+      </div>
+      <div class="curriculum__item">
+        <span class="curriculum__icon">📦</span>
+        <h3 class="curriculum__item-title">Produse profesionale</h3>
+        <p class="curriculum__item-desc">Cum alegi și utilizezi produse de calitate profesională, inclusiv din gama MilkShake. Ce produse recomanzi clientelor pentru menținere acasă.</p>
+      </div>
+    </div>
+
+    <div class="curriculum__details">
+      <div class="curriculum__detail">
+        <span class="curriculum__detail-val">1</span>
+        <span class="curriculum__detail-label">Zi intensivă</span>
+      </div>
+      <div class="curriculum__detail">
+        <span class="curriculum__detail-val">100%</span>
+        <span class="curriculum__detail-label">Practică pe model real</span>
+      </div>
+      <div class="curriculum__detail">
+        <span class="curriculum__detail-val">6–8</span>
+        <span class="curriculum__detail-label">Cursante per serie</span>
+      </div>
+      <div class="curriculum__detail">
+        <span class="curriculum__detail-val">✓</span>
+        <span class="curriculum__detail-label">Certificat participare</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ TESTIMONIALS ════ -->
+<section class="testimonials reveal">
+  <div class="container--wide">
+    <div class="testimonials__head">
+      <span class="testimonials__tag">Ce spun cursantele</span>
+      <h2 class="testimonials__heading">
+        Nu testimoniale.<br>
+        <em>Transformări.</em>
+      </h2>
+    </div>
+
+    <div class="testimonials__grid">
+      <div class="testimonial">
+        <div class="testimonial__stars">★★★★★</div>
+        <p class="testimonial__text">
+          Înainte de cursul Elenei, știam tehnica — dar nu înțelegeam de ce uneori ieșea bine și alteori nu. Acum știu să citesc parul clientelor înainte să pun mâna pe vopsea. Asta face toată diferența.
+        </p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">A</div>
+          <div>
+            <div class="testimonial__name">Andreea M.</div>
+            <div class="testimonial__role">Hairstylist, Iași</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial__stars">★★★★★</div>
+        <p class="testimonial__text">
+          Am mai fost la cursuri înainte. Acesta e primul în care am înțeles principiile, nu doar pașii. Elena are răbdare să explice de ce — și asta e exact ce îmi lipsea.
+        </p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">M</div>
+          <div>
+            <div class="testimonial__name">Maria C.</div>
+            <div class="testimonial__role">Coafor, Bacău</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="testimonial__stars">★★★★★</div>
+        <p class="testimonial__text">
+          Două zile și am plecat cu un portofoliu real și cu încrederea că știu ce fac. Nu am mai ieșit dintr-un curs simțindu-mă astfel. Recomand oricărei stiliste care vrea să evolueze serios.
+        </p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">I</div>
+          <div>
+            <div class="testimonial__name">Ioana P.</div>
+            <div class="testimonial__role">Coloristă, Suceava</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ ABOUT ════ -->
+<section class="about reveal">
+  <div class="container">
+    <div class="about__layout">
+
+      <div class="about__portrait">
+        <div class="about__portrait-placeholder">
+          [Foto Elena Enache<br>în salon]
+        </div>
+      </div>
+
+      <div>
+        <span class="about__tag">Trainer</span>
+        <h2 class="about__heading">
+          Nu un instructor.<br>
+          Un <em>profesionist</em><br>
+          activ.
+        </h2>
+        <p class="about__bio">
+          Elena Enache este hairstylist, coloristă și trainer cu experiență în servicii premium de salon în Iași. Cursurile ei nu vin din manuale — vin din ceea ce aplică zilnic cu clienții reali.
+        </p>
+        <p class="about__bio">
+          Specializată în colorimetrie avansată, balayage și tehnici de hairstyling, Elena folosește în exclusivitate produse profesionale din gama MilkShake și alte branduri de calitate — pe care le cunoaște în detaliu și le recomandă cu argumente, nu cu etichete.
+        </p>
+        <p class="about__bio">
+          Ce diferențiază cursurile ei: feedback în timp real, bazat pe ce se întâmplă în fața ta, nu teorie generică.
+        </p>
+
+        <div class="about__stats">
+          <div>
+            <span class="about__stat-val">10+</span>
+            <span class="about__stat-label">Ani experiență</span>
+          </div>
+          <div>
+            <span class="about__stat-val">100+</span>
+            <span class="about__stat-label">Cursante formate</span>
+          </div>
+          <div>
+            <span class="about__stat-val">Iași</span>
+            <span class="about__stat-label">Activ în salon</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ FAQ ════ -->
+<section class="faq reveal">
+  <div class="container">
+    <div class="faq__head">
+      <span class="faq__tag">Întrebări frecvente</span>
+      <h2 class="faq__heading">Ai <em>întrebări.</em><br>Avem răspunsuri.</h2>
+    </div>
+
+    <div class="faq__list">
+      <div class="faq__item">
+        <button class="faq__q">
+          Trebuie să am experiență anterioară pentru a participa?
+          <span class="faq__icon">+</span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          Nu este necesară experiență anterioară în tehnici avansate, dar cursul este destinat persoanelor care au noțiuni de bază în hairstyling sau coafor. Dacă ești la început complet, îți recomand să ne contactezi înainte — discutăm ce varianta ți se potrivește cel mai bine.
+        </div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          Primesc certificat la finalul cursului?
+          <span class="faq__icon">+</span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          Da, fiecare cursantă primește un certificat de participare la finalul zilei. Acesta atestă modulele parcurse și tehnicile studiate.
+        </div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          Câte locuri sunt disponibile per serie?
+          <span class="faq__icon">+</span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          Fiecare serie are maxim 6–8 cursante. Numărul mic este deliberat — feedback personalizat nu se poate oferi în grupe mari. Locurile se ocupă rapid, de obicei cu 2–3 săptămâni înainte de start.
+        </div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          Cum funcționează plata și rezervarea?
+          <span class="faq__icon">+</span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          După completarea formularului de mai jos, te contactez personal în maxim 24 de ore. Îți confirm disponibilitatea, discutăm detaliile și stabilim modalitatea de plată. Nu există plată online — totul se confirma direct între noi.
+        </div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          Pot veni din alt oraș? Există cazare recomandată?
+          <span class="faq__icon">+</span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          Absolut. Avem cursante care vin din Bacău, Suceava, Neamț, Vaslui. Cursul se desfășoară în Iași — la înregistrare îți trimit locația exactă și câteva opțiuni de cazare în apropiere, la prețuri rezonabile.
+        </div></div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q">
+          Ce materiale și produse se folosesc în curs?
+          <span class="faq__icon">+</span>
+        </button>
+        <div class="faq__a"><div class="faq__a-inner">
+          Toate materialele necesare sunt incluse în prețul cursului. Lucrăm cu produse profesionale, inclusiv din gama MilkShake. Nu ai nevoie să aduci nimic în afara ta.
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ REGISTER / FORM ════ -->
+<section class="register" id="inscriere">
+  <div class="container">
+
+    <div class="register__head reveal">
+      <span class="register__tag">Înregistrare</span>
+      <h2 class="register__heading">
+        Rezervă-ți<br>
+        <em>locul</em>
+      </h2>
+      <p class="register__sub">Completează formularul. Îți răspund eu personal în maxim 24 de ore.</p>
+    </div>
+
+    <div class="register__urgency reveal">
+      <strong>⚡ Seria viitoare — locuri limitate.</strong> Ultimele serii s-au ocupat cu 2 săptămâni înainte de start.
+    </div>
+
+    <div class="register__form reveal">
+      <form id="regForm">
+        <div class="form-group">
+          <label class="form-label" for="name">Nume complet *</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="Prenume Nume" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="phone">Telefon *</label>
+          <input class="form-input" type="tel" id="phone" name="phone" placeholder="07XX XXX XXX" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email *</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="adresa@email.ro" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="city">Orașul tău</label>
+          <input class="form-input" type="text" id="city" name="city" placeholder="Ex: Iași, Bacău, Suceava...">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="level">Nivelul tău actual</label>
+          <select class="form-select" id="level" name="level">
+            <option value="" disabled selected>Selectează...</option>
+            <option value="beginner">Sunt la început — mai puțin de 1 an experiență</option>
+            <option value="intermediate">Am experiență de bază — 1-3 ani</option>
+            <option value="advanced">Lucrez deja — vreau să mă perfecționez</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="question">O întrebare sau ceva ce vrei să știu</label>
+          <textarea class="form-textarea" id="question" name="question" placeholder="Opțional — orice detaliu util..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">
+          Trimite cererea de înregistrare →
+        </button>
+
+        <p class="form-note">
+          Fără obligații. Nu există plată online. Îți confirm eu disponibilitatea și discutăm toate detaliile înainte de orice angajament.
+        </p>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <span class="form-success__icon">✦</span>
+        <h3 class="form-success__title">Cererea a fost trimisă.</h3>
+        <p class="form-success__text">
+          Îți mulțumesc pentru interes.<br>
+          Îți răspund personal în maxim 24 de ore pentru a confirma disponibilitatea și a-ți da toate detaliile.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__name">Elena Enache</div>
+    <p class="footer__sub">Hairstylist · Coloristă · Trainer · Iași</p>
+  </div>
+</footer>
+
+<script>
+  // ── NAV scroll ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── Countdown timer (10 min) ──
+  (function() {
+    const el = document.getElementById('navTimer');
+    if (!el) return;
+    const KEY = 'ee_timer_end';
+    let end = parseInt(sessionStorage.getItem(KEY) || '0');
+    if (!end || end <= Date.now()) {
+      end = Date.now() + 10 * 60 * 1000;
+      sessionStorage.setItem(KEY, end);
+    }
+    function tick() {
+      const diff = Math.max(0, end - Date.now());
+      const m = Math.floor(diff / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      el.textContent = m + ':' + String(s).padStart(2, '0');
+      if (diff > 0) setTimeout(tick, 1000);
+      else el.textContent = '0:00';
+    }
+    tick();
+  })();
+
+  // ── Reveal on scroll ──
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => io.observe(el));
+
+  // ── FAQ accordion ──
+  document.querySelectorAll('.faq__q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq__item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ── Form submit ──
+  document.getElementById('regForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.form-submit');
+    btn.textContent = 'Se trimite...';
+    btn.disabled = true;
+
+    // Simulate submission — in production replace with fetch() to your endpoint
+    setTimeout(() => {
+      document.getElementById('regForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+      document.getElementById('formSuccess').style.animation = 'none';
+      // scroll to success
+      document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 1200);
+  });
+</script>
+</body>
+</html>
